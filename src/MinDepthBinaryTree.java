@@ -1,25 +1,8 @@
 public class MinDepthBinaryTree {
-    int l = 1;
-    int min = 100000;
     public int minDepth(TreeNode root) {
         if(root == null) return 0;
-        depth(root);
-        return min;
-    }
-    void depth(TreeNode root){
-        if(root == null) return;
-        if(root.left == null && root.right == null) {
-            min = Math.min(min, l);
-            l--;
-            return;
-        }
-        if(root.left != null){
-            l++;
-            depth(root.left);
-        }
-        if(root.right != null){
-            l++;
-            depth(root.right);
-        }
+        int left = minDepth(root.left);
+        int right = minDepth(root.right);
+        return (left == 0 || right == 0) ? left + right + 1 :Math.min(left, right) + 1;
     }
 }
