@@ -8,8 +8,7 @@ public class FindModeInBST {
         if(root == null) return null;
         if(root.left == null && root.right == null) return new int[]{root.val};
         findDuplicates(root);
-        Collection<Integer> values = map.values();
-        Object[] valuesArray = values.toArray();
+        Object[] valuesArray = map.values().toArray();
         Arrays.sort(valuesArray);
         int max = (int) valuesArray[valuesArray.length-1];
         map.forEach((key, value) -> {
